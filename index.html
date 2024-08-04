@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+< lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>VEHICLE RENTAL SYSTEM</title>
+</head>
+<body>
+    <h1>CARS VILLA</h1>
+    <h2>LUXURY CARS SINCE - 1998</h2>
+    <form id="register-form">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br>
+        <label for="contact">Contact:</label><br>
+        <input type="tel" id="contact" name="contact" required><br>
+        <button type="button" id="register-btn" onclick="register()">Register</button>
+        <a href="page1.html">Go to next page</a>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
+    <style>
+ body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-image: url(img_0623.jpg);
+  font-size: xx-large;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  animation: fadeIn 2s ease-in-out; 
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.body {
+  background-image: url(img_0623.jpg);
+  background-attachment: fixed;
+  animation: slideIn 2s ease-in-out; 
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: transparent;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  background-color: black;
+  color: goldenrod;
+  border-color: white;
+  border-width: 10px;
+  border: 1px solid #ddd;
+  width: 150px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  animation: pulse 2s ease-in-out infinite; 
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+
+
+
+#vehicle-info {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-image: url(img_0623.jpg);
+  font-size: xx-large;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+form {
+  max-width: 1200px;
+  margin: 70px auto;
+  padding: 20px;
+  height: 700px;
+  background-color: transparent;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-display: inherit;
+  animation: slideIn 2s ease-in-out; 
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+input[type="text"], input[type="Username"] {
+  padding: 20px;
+  margin-top: 0px;
+  margin-bottom: 40px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: black;
+  width: 20%;
+  color: white; 
+  transition: all 0.3s ease-in-out; 
+}
+
+input[type="text"]:focus, input[type="Username"]:focus {
+  padding: 20px;
+  margin-top: 0px;
+  margin-bottom: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: gray; 
+  width: 25%; 
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+  animation: rainbow 2s ease-in-out infinite; 
+}
+
+input[type="text"]:hover, input[type="Username"]:hover {
+  animation: spin 1s ease-in-out; 
+}
+
+input[type="tel"], input[type="Contact"] {
+  padding: 20px;
+  margin-top: 0px;
+  margin-bottom: 40px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: black;
+  width: 20%;
+  color: white; 
+  transition: all 0.3s ease-in-out; 
+}
+
+input[type="tel"]:focus, input[type="Contact"]:focus {
+  padding: 20px;
+  margin-top: 0px;
+  margin-bottom: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color:grey; 
+  width: 25%; 
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+  animation: rainbow 2s ease-in-out infinite; 
+}
+
+input[type="tel"]:hover, input[type="Contact"]:hover {
+  animation: spin 1s ease-in-out; 
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+<script>
+    document.getElementById('register-btn'). addEventListener('click', async (event) => {
+      event.preventDefault();
+      alert("Registration Successful!");
+      console.log("Go to page1.html");
+
+      const username = document.getElementById('username').value;
+      const contact = document.getElementById('contact').value;
+
+      try {
+        const response = await fetch('/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, contact }),
+        });
+
+        if (response.ok) {
+          window.location.href = 'page1.html';
+        } else {
+          console.error('Registration failed');
+        }
+      } catch (
